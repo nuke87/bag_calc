@@ -21,3 +21,6 @@ func main() {
 }
 
 //das ist ein Kommentar, um git zu testen
+// noch ein Kommentar als test
+// und noch ein Kommentar
+// und noch ein Kommentar
