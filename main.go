@@ -7,6 +7,7 @@ func main() {
 	ch := make(chan string)
 	ch1 := "hi"
 	x := 1
+	x2 := 2
 
 	// Start a goroutine that sends a message to the channel
 	go func() {
@@ -20,6 +21,7 @@ func main() {
 	fmt.Println(message)
 	fmt.Println(ch1)
 	fmt.Println(x)
+	fmt.Println(x2)
 }
 
 //das ist ein Kommentar, um git zu testen
