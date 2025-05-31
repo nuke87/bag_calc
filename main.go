@@ -1,32 +1,44 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-func main() {
-	// Create a channel to communicate between goroutines
-	ch := make(chan string)
-	ch1 := "hi"
-	x := 1
-	x2 := 2
-	y := 3
+func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
+	d := schnurdickeMm / 10.0 // mm → cm
 
-	// Start a goroutine that sends a message to the channel
-	go func() {
-		ch <- "Hello from the goroutine!"
-	}()
+	aMax := breiteCm / 2.0
+	bMax := hoeheCm / 2.0
 
-	// Receive the message from the channel
-	message := <-ch
+	n := math.Floor(aMax / d)
 
-	// Print the received message
-	fmt.Println(message)
-	fmt.Println(ch1)
-	fmt.Println(x)
-	fmt.Println(x2)
-	fmt.Println(y)
+	// Dynamischer Korrekturfaktor je nach Form
+	alpha := 0.75 * (hoeheCm / breiteCm)
+
+	a := aMax - alpha*n*d
+	b := a * (bMax / aMax)
+
+	if a <= 0 || b <= 0 {
+		return 0
+	}
+
+	c := math.Sqrt(a*a - b*b)
+	return 2 * c
 }
 
-//das ist ein Kommentar, um git zu testen
-// noch ein Kommentar als test
-// und noch ein Kommentar
-// und noch ein Kommentar
+func main() {
+	var breite, hoehe, schnurdicke float64
+
+	fmt.Print("Schnurdicke in mm: ")
+	fmt.Scanln(&schnurdicke)
+
+	fmt.Print("Breite des Ovals in cm: ")
+	fmt.Scanln(&breite)
+
+	fmt.Print("Höhe des Ovals in cm: ")
+	fmt.Scanln(&hoehe)
+
+	ab := berechneAB(breite, hoehe, schnurdicke)
+	fmt.Printf("AB-Abstand bei Spiral-Oval %.1f×%.1f cm: %.2f cm\n", breite, hoehe, ab)
+}
