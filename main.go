@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bag_calc/berechnungen"
 	"fmt"
-	"math"
 )
 
 // berechneAB berechnet den AB-Abstand für ein Spiral-Oval
@@ -10,7 +10,7 @@ import (
 // hoeheCm: Höhe des Ovals in Zentimetern
 // schnurdickeMm: Dicke der verwendeten Schnur in Millimetern
 // Rückgabewert: berechneter AB-Abstand in Zentimetern
-func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
+/*func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
 	d := schnurdickeMm / 10.0 // Umrechnung Schnurdicke von mm in cm
 
 	aMax := breiteCm / 2.0 // Halbe Breite (Halbachse a)
@@ -30,7 +30,7 @@ func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
 	}
 	c := math.Sqrt(a*a - b*b) // Brennpunktabstand für Ellipse
 	return 2 * c              // AB-Abstand ist die doppelte Brennpunktdistanz
-}
+}*/
 
 func main() {
 	var breite, hoehe, schnurdicke float64
@@ -51,8 +51,7 @@ func main() {
 		fmt.Println("Breite, Höhe und Schnurdicke müssen größer als 0 sein.")
 		return
 	}
-
+	ab := berechnungen.BerechneAB(breite, hoehe, schnurdicke)
 	// Berechnung und Ausgabe des AB-Abstands
-	ab := berechneAB(breite, hoehe, schnurdicke)
 	fmt.Printf("AB-Abstand bei Spiral-Oval %.1f×%.1f cm: %.2f cm\n", breite, hoehe, ab)
 }
