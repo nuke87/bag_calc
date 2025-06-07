@@ -5,7 +5,7 @@ import (
 	"math"
 )
 
-<<<<<<< HEAD
+
 // berechneAB berechnet den AB-Abstand für ein Spiral-Oval
 // breiteCm: Breite des Ovals in Zentimetern
 // hoeheCm: Höhe des Ovals in Zentimetern
@@ -24,7 +24,7 @@ func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
 
 	a := aMax - alpha*n*d  // Angepasste Halbachse a nach Windungen
 	b := a * (bMax / aMax) // Angepasste Halbachse b proportional
-=======
+
 // berechneAB berechnet den Abstand AB für ein spiralig gelegtes Oval (Ellipse).
 // breiteCm: Breite des Ovals in Zentimetern
 // hoeheCm: Höhe des Ovals in Zentimetern
@@ -43,21 +43,19 @@ func berechneAB(breiteCm, hoeheCm, schnurdickeMm float64) float64 {
 
 	a := aMax - alpha*n*d  // Angepasste große Halbachse nach n Windungen
 	b := a * (bMax / aMax) // Angepasste kleine Halbachse
->>>>>>> 29fd5c7 (Eingabepruefung wurde hinzugefuegt)
+
 
 	// Falls die Achsen negativ oder null werden, ist keine weitere Windung möglich
 	if a <= 0 || b <= 0 {
 		return 0 // Kein sinnvoller Wert möglich
 	}
-
-<<<<<<< HEAD
-	c := math.Sqrt(a*a - b*b) // Brennpunktabstand für Ellipse
+    c := math.Sqrt(a*a - b*b) // Brennpunktabstand für Ellipse
 	return 2 * c              // AB-Abstand ist die doppelte Brennpunktdistanz
-=======
+
 	// Berechnung des Abstandes AB (hier als Durchmesser einer Hilfskonstruktion)
 	c := math.Sqrt(a*a - b*b)
 	return 2 * c
->>>>>>> 29fd5c7 (Eingabepruefung wurde hinzugefuegt)
+
 }
 
 func main() {
